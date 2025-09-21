@@ -1,14 +1,11 @@
-FROM n8nio/n8n:latest
+FROM node:18-alpine
 
-USER root
-WORKDIR /home/node/n8n
+WORKDIR /usr/src/n8n
 
-RUN npm install -g npm@latest
-RUN npm install -g pnpm@10.16.0
-
-COPY . .
-
-RUN pnpm install --no-frozen-lockfile
+RUN npm install -g n8n@latest --unsafe-perm
 
 USER node
-CMD ["pnpm", "start"]
+
+EXPOSE 5678
+
+CMD ["n8n", "start"]
