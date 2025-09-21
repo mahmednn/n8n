@@ -8,7 +8,7 @@ RUN npm install -g pnpm@10.16.0
 
 COPY . .
 
-RUN pnpm install --frozen-lockfile || pnpm install
+RUN pnpm install --no-frozen-lockfile
 
 USER node
 CMD ["pnpm", "start"]
